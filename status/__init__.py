@@ -14,7 +14,6 @@ from status.extensions import (
     moment
 )
 
-app = Flask(__name__)
 
 
 def create_app(object_name):
@@ -27,6 +26,7 @@ def create_app(object_name):
                      e.g. status.settings.ProdConfig
     """
 
+    app = Flask(__name__)
 
     app.config.from_object(object_name)
 
