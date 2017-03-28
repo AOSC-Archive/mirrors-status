@@ -16,7 +16,7 @@
     {% endblock %}
 
     {% assets "common_css" %}
-        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ request.url_root }}{{ ASSET_URL }}"/>
     {% endassets %}
 
     {% block css %}
