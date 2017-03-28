@@ -1,0 +1,12 @@
+body {
+  font-family: Tahoma, Verdana, "Segoe UI", sans-serif;
+}
+a:focus {
+  outline: none;
+}
+.afe-flag-template {
+  display: none !important;
+}
+main {
+    padding-top: 50px;
+}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}AOSC Mirrors Status{% endblock %}
+
+{% block body %}
+    <table id="mirrors-status" class="table" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th data-breakpoints="all">ID</th>
+            <th>Area</th>
+            <th>Name</th>
+            <th>Last Updated</th>
+            <th>Status</th>
+            <th data-breakpoints="all">Last Update URL</th>
+            <th data-breakpoints="all">Last Check</th>
+            <th data-breakpoints="all">Last Check Status Code</th>
+            <th data-breakpoints="all">Last Check Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="mirror-{{ repo.id }}">
+            <td>{{ repo.id }}</td>
+            <td>{{ repo.area }}</td>
+            <td><a href="{{ repo.url }}">{{ repo.name }}</a></td>
+            <td>{{ moment(repo.repo_last_update).format('YYYY-MM-DD hh:mm:ss') }}
+                ({{ moment(repo.repo_last_update).fromNow() }})
+            </td>
+            <td class="info">Main Repo {% if repo.last_fetch_status_code != 200 %} ({{ repo.last_fetch_status }}
+                ){% endif %}</td>
+            <td><a href="{{ repo.last_update_url }}">{{ repo.last_update_url }}</a></td>
+            <td>{{ repo.last_fetch }}</td>
+            <td>{{ repo.last_fetch_status_code }}</td>
+            <td>{{ repo.last_fetch_status }}</td>
+        </tr>
+        {% for mirror in mirrors %}
+            <tr id="mirror-{{ mirror.id }}">
+                <td>{{ mirror.id }}</td>
+                <td>{{ mirror.area }}</td>
+                <td><a href="{{ mirror.url }}">{{ mirror.name }}</a></td>
+                <td>{{ moment(mirror.repo_last_update).format('YYYY-MM-DD hh:mm:ss') }}</td>
+
+                {% if mirror.last_fetch_status_code != 200 %}
+                    <td class="danger">Failed: ({{ mirror.last_fetch_status }})</td>
+                {% else %}
+                    {% if mirror.repo_last_update != repo.repo_last_update %}
+                        <td class="danger">{{ moment(mirror.repo_last_update).fromTime(repo.repo_last_update) }}</td>
+                    {% else %}
+                        <td class="success">Up to date!</td>
+                    {% endif %}
+                {% endif %}
+                <td><a href="{{ mirror.last_update_url }}">{{ mirror.last_update_url }}</a></td>
+                <td>{{ mirror.last_fetch }}</td>
+                <td>{{ mirror.last_fetch_status_code }}</td>
+                <td>{{ mirror.last_fetch_status }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <p>Last Update: {{ moment(repo.last_fetch).format('YYYY-MM-DD hh:mm:ss') }} ({{ moment(repo.last_fetch).fromNow() }})</p>
+{% endblock %}
+{% block js %}
+    {{ super() }}
+    <script>
+        jQuery(function ($) {
+            $('.table').footable();
+        });
+    </script>
+{% endblock %}

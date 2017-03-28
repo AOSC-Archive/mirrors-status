@@ -1,0 +1,210 @@
+/*
+ * I am the master stylesheet which will be applied on all pages.
+ *
+ */
+.afe-radio-caption {
+  padding: 0 10px 0 2px;
+}
+.afe-small-captions {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 10px 0 20px;
+}
+.afe-small-captions.afe-important {
+  color: #d70a53;
+}
+.afe-cover {
+  object-fit: cover;
+}
+.afe-invert-background {
+  background-color: #3f5172;
+  color: #f2f2f2;
+}
+.affix {
+  position: static;
+}
+@media (min-width: 768px) {
+  .affix {
+    position: fixed !important;
+    top: 45px;
+  }
+}
+#nav {
+  border: none;
+}
+#nav ul {
+  float: none;
+}
+#nav li {
+  display: inline-block;
+  font-size: 14px;
+  text-align: center;
+}
+#nav li a {
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+#nav li a:focus {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+#nav li a.active {
+  opacity: 1;
+  -ms-filter: none;
+  filter: none;
+}
+#nav li:nth-of-type(2) a {
+  margin-left: 10px;
+}
+#nav li.afe-primary {
+  margin-left: -15px;
+  float: left;
+  font-size: 18px;
+  min-width: 100px;
+}
+#nav li.afe-primary a,
+#nav li.afe-primary a:hover,
+#nav li.afe-primary a:focus {
+  background-color: #21324b;
+}
+#nav li.afe-highlight {
+  margin-right: -15px;
+  float: right;
+  font-size: 18px;
+  min-width: 100px;
+}
+#nav li.afe-highlight a,
+#nav li.afe-highlight a:hover,
+#nav li.afe-highlight a:focus {
+  background-color: #d70a53;
+}
+.afe-banner {
+  position: relative;
+  z-index: 100;
+}
+.afe-banner > div {
+  background-color: #1b1434;
+  color: #fff;
+}
+.afe-static-banner {
+  background-image: url("/assets/i/banner.min.svg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 100%;
+  z-index: 100;
+}
+.afe-static-banner .row {
+  min-height: 300px;
+  padding: 31.499999999999996px 0 58.5px;
+}
+.afe-static-banner .row.afe-banner-subpage {
+  min-height: 0;
+}
+.afe-static-banner .row.afe-banner-subpage h1 {
+  font-size: 30px;
+}
+.afe-static-banner .row.afe-banner-subpage h2 {
+  font-size: 18px;
+}
+.afe-static-banner .row h1,
+.afe-static-banner .row h2,
+.afe-static-banner .row h3,
+.afe-static-banner .row p {
+  margin: 5px 0;
+}
+.afe-static-banner .row h1.afe-index-title {
+  font-size: 90px;
+}
+.afe-static-banner .row h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+.afe-static-banner .row h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.afe-static-banner .row h3 {
+  font-size: 15px;
+  font-weight: 400;
+}
+.afe-static-banner .row p {
+  margin-top: 25px;
+}
+.afe-floating-banner {
+  position: absolute;
+  z-index: 200;
+  width: 100%;
+  bottom: 0;
+  -webkit-transition: 0.1s;
+  -moz-transition: 0.1s;
+  -o-transition: 0.1s;
+  -ms-transition: 0.1s;
+  transition: 0.1s;
+  opacity: 0;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  min-height: 30px;
+}
+.afe-floating-banner.afe-fixed {
+  position: fixed;
+  bottom: auto;
+}
+.afe-floating-banner .row {
+  padding: 5px 0;
+}
+.afe-body >.container>.row {
+  padding: 50px 0;
+}
+#wrapper,
+.afe-wrapper.row {
+  padding-top: 25px;
+}
+.afe-content img {
+  max-width: 100%;
+}
+.afe-content hr {
+  opacity: 0.1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+  filter: alpha(opacity=10);
+  border-color: #21324b;
+}
+.afe-content a {
+  color: #d70a53;
+}
+.afe-content code {
+  white-space: pre;
+  color: #577db5;
+  background-color: transparent;
+}
+.afe-content ol,
+.afe-content ul {
+  margin-bottom: 10px;
+}
+.afe-footer {
+  height: 20px;
+  color: #e6e6e6;
+  font-size: 12px;
+  background-color: #263144;
+}
+.afe-footer span {
+  line-height: 20px;
+  margin-right: 2em;
+}
+.afe-footer span:last-type {
+  margin-right: 0;
+}
+body {
+  color: #3f5172;
+  background-color: #f2f2f2;
+  padding-top: 45px;
+  padding-bottom: 20px;
+}
+body a,
+body a:focus {
+  color: #3f5172;
+}
