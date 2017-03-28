@@ -16,7 +16,7 @@
     {% endblock %}
 
     {% assets "common_css" %}
-        <link rel="stylesheet" type="text/css" href="{{ request.url_root[:-1] }}{{ ASSET_URL }}"/>
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}"/>
     {% endassets %}
 
     {% block css %}
@@ -61,7 +61,7 @@
 <script src="https://cdn.jsdelivr.net/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 {% assets "common_js" %}
-    <script type="text/javascript" src="{{ request.url_root[:-1] }}{{ ASSET_URL }}"></script>
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
 {% endassets %}
 {{ moment.include_moment(local_js="https://cdn.jsdelivr.net/momentjs/2.18.1/moment-with-locales.min.js") }}
 
