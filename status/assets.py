@@ -7,18 +7,12 @@ common_css = Bundle(
     'css/vendor/helper.css',
     'css/vendor/footable.bootstrap.min.css',
     'css/master.css',
-    'css/main.css',
-    filters='cssmin',
-    output='public/css/common.css'
+    'css/main.css'
 )
 
 common_js = Bundle(
-    Bundle(
         'js/vendor/footable.min.js',
-        'js/main.js',
-        filters='jsmin'
-    ),
-    output='public/js/common.js'
+        'js/main.js'
 )
 
 def fetch_last_update(url):
