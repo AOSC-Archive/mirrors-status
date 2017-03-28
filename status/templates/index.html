@@ -44,7 +44,9 @@
                     <td class="danger">Failed: ({{ mirror.last_fetch_status }})</td>
                 {% else %}
                     {% if mirror.repo_last_update != repo.repo_last_update %}
-                        <td class="danger">{{ moment(mirror.repo_last_update).fromTime(repo.repo_last_update) }}</td>
+                        {% set delta = repo.repo_last_update - mirror.repo_last_update %}
+                        {% set delta_second = delta.total_seconds() %}
+                        <td class="{% if delta_second < 43200 %}warning{% else %}danger{% endif %} {{ delta_second }}">{{ moment(mirror.repo_last_update).fromTime(repo.repo_last_update) }}</td>
                     {% else %}
                         <td class="success">Up to date!</td>
                     {% endif %}
