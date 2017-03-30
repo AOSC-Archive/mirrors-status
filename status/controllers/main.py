@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for, current_app, jsonify
 from itsdangerous import JSONWebSignatureSerializer
+import rollbar
 # from flask_login import login_user, logout_user, login_required
 
 from status.extensions import cache
@@ -32,6 +33,7 @@ def refresh():
     try:
         data = serializer.loads(token)
     except:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403
 
     if data.get('type') == 'update':
@@ -46,6 +48,7 @@ def refresh():
             db.session.commit()
         return jsonify({'message': str(len(mirrors)) + " updated"}), 200
     else:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403
 
 
@@ -56,6 +59,7 @@ def add_mirror():
     try:
         data = serializer.loads(token)
     except:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403
 
     if data.get('type') == 'update':
@@ -74,6 +78,7 @@ def add_mirror():
             return redirect(url_for('.add_mirror'))
         return render_template('add_mirror.html', form=form)
     else:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403
 
 
@@ -85,6 +90,7 @@ def update_mirror(id):
     try:
         data = serializer.loads(token)
     except:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403
 
     if data.get('type') == 'update':
@@ -109,4 +115,5 @@ def update_mirror(id):
 
             return render_template('update_mirror.html', form=form, id=id)
     else:
+        rollbar.report_message("Illegal request: " + request.url, 'warning', request=request)
         return 'Forbidden', 403

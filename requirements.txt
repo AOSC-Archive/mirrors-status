@@ -31,6 +31,7 @@ pytest==3.0.5
 pytest-cov==2.4.0
 python-editor==1.0.3
 requests==2.13.0
+rollbar==0.13.11
 six==1.10.0
 SQLAlchemy==1.1.7
 webassets==0.12.1
